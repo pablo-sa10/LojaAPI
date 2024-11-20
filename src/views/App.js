@@ -19,11 +19,13 @@ function App() {
     return (
         <section className='container'>
             <h1 className=''>Loja do Pablo</h1>
-            {/* <ul>
-                {products.map((product) => (
-                    <li key={product.id}>{product.name}</li>
-                ))}
-            </ul> */}
+            <div className='row'>
+                {<div className='col-4 card'>
+                    {products.map((product) => (
+                        <div className='' key={product.id}>{product.name}</div>
+                    ))}
+                </div>}
+            </div>
         </section>
     );
 }
