@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import api from './services/api';
+import api from '../services/api';
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -7,8 +7,9 @@ function App() {
     useEffect(() => {
         api.get('/products')
             .then((response) => {
-                // setProducts(response.data);
-                console.log(response)
+                let produtos = response.data.products
+                console.log(produtos);
+                setProducts(produtos);
             })
             .catch((error) => {
                 console.error('Erro ao buscar produtos:', error);
@@ -16,14 +17,14 @@ function App() {
     }, []);
 
     return (
-        <div>
-            <h1>Lista de Produtos</h1>
-            <ul>
+        <section className='container'>
+            <h1 className=''>Loja do Pablo</h1>
+            {/* <ul>
                 {products.map((product) => (
                     <li key={product.id}>{product.name}</li>
                 ))}
-            </ul>
-        </div>
+            </ul> */}
+        </section>
     );
 }
 
