@@ -29,7 +29,7 @@ function App() {
 
     async function submitCart() {
         setCartLoading(true);
-        await apiSubmitCart();
+        await apiSubmitCart(cart);
         setCart([]);
         setCartLoading(false);
 
