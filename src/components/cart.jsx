@@ -37,6 +37,18 @@ const SDivUnits = styled.div`
     }
 `;
 
+const SSection = styled.section`
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 50px;
+    gap: 20px;
+`;
+
+const SUl = styled.ul`
+    list-style-type: none;
+`;
+
 function CartProduct({product, onChange, isLoading}){
     return (
         <SLi>
@@ -56,18 +68,6 @@ function CartProduct({product, onChange, isLoading}){
         </SLi>
     );
 }
-
-const SSection = styled.section`
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 50px;
-    gap: 20px;
-`;
-
-const SUl = styled.ul`
-    list-style-type: none;
-`;
 
 function Cart({products, onchange, onClick, isLoading = false}){
     return (

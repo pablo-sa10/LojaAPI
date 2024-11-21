@@ -1,38 +1,70 @@
-import styled from "styled-components";
+import style from "styled-components";
 
 const SDiv = style.div`
     height: 260px;
-`
+    padding: 10px;
+    border-radius: 10px;
+    background: #f2f2f2;
+    cursor: pointer;
+    max-width: 250px;
+
+    img{
+        width: 100%;
+        height: 140px;
+        border-radius: 5px;
+    }
+`;
+
+const SDivInfo = style.div`
+    padding: 15px;
+
+    p{
+        font-size: 15px;
+    }
+
+    span{
+        font-size: 20px;
+        font-weight: bold;
+    }
+`;
+
+const SSection = style.section`
+    overflow: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 230px;
+    gap: 20px;
+`;
 
 function Product({ product, onClick }) {
     return (
-        <div onClick={() => onClick(product)}>
+        <SDiv onClick={() => onClick(product)}>
             <img
                 src={product.image}
                 alt={product.name}
-                className="img-fluid mb-3 rounded"
-                style={{ maxHeight: '150px', objectFit: 'cover' }}
             />
-            <div className="card-body">
-                <h5 className="card-title text-center text-dark">{product.name}</h5>
-                <h6 className="text-center text-success fw-bold">
+            <SDivInfo className="card-body">
+                <p className="card-title text-center text-dark">{product.name}</p>
+                <p className="text-center text-success fw-bold">
                     R$ {product.price}
-                </h6> {/* Exibe o preço em negrito e com cor verde */}
-            </div>
-        </div>
+                </p> {/* Exibe o preço em negrito e com cor verde */}
+            </SDivInfo>
+        </SDiv>
     )
 }
 
 
-
 function Products({ products, onClick, isLoading = false }) {
-    <section
-        className="col-md-3 mx-2 col-12 card my-4 p-3 shadow-sm border-0"
-        style={{ backgroundColor: '#f8f9fa', borderRadius: '10px' }} // Cor clara no fundo
-    >{isLoading ? "Carregando..." : products.length > 0 ? products.map((product) => (
-        <Product key={product.id} product={product} onClick={onClick}></Product>
-    )) : "Nenhum Produto Encontrado!"}
-    </section>
+    return (<SSection>
+        {isLoading ?
+            "Carregando..."
+            : products.length > 0
+                ? products.map((product) => (
+                    <Product key={product.id} product={product} onClick={onClick}></Product>
+                )) : "Nenhum Produto Encontrado!"}
+    </SSection>
+    )
 }
 
 export default Products;

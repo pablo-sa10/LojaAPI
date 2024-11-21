@@ -5,6 +5,14 @@ import Product from "../components/products";
 import { apiGetProducts, apiSubmitCart } from "../services/api"; // Importa as funções
 import '../assets/App.css'
 
+const SMain = styled.main`
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr;
+`;
+
 function App() {
     const [productsLoading, setProductsLoading] = useState(false);
     const [products, setProducts] = useState([]);
@@ -55,14 +63,6 @@ function App() {
         getProducts();
     }, []);
 
-
-    const SMain = styled.main`
-        width: 100%;
-        height: 100vh;
-        display: grid;
-        grid-template-columns: 300px 1fr;
-        grid-template-rows: 1fr;
-    `
     return(
         <SMain>
             <Cart
