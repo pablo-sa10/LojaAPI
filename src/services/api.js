@@ -1,7 +1,20 @@
-import axios from 'axios';
 
-const api = axios.create({
-    baseURL: 'http://localhost:4000', // URL do back-end
-});
+async function api(url, method, body = undefined) {
+    return await fetch(`http://localhost:4000${url}`, {
+        body: body !== undefined ? JSON.stringify(body) : body,
+        method: method,
+        headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+        },
+    }).then((res) => res.json());
+}
 
-export default api;
+export async function apiGetProducts() {
+    const data = await api("/products", "GET");
+    return data.products;
+}
+
+export async function apiSubmitCart(products) {
+    await api("/purchases", "POST", { products });
+}
